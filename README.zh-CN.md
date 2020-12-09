@@ -1,0 +1,54 @@
+# Wayback on GitHub
+
+阅读其它语言版本: [English](./README.md) | 简体中文
+
+基于 GitHub Actions 运行 `wayback` 服务.
+
+## 配置
+
+`wabarc/on-github` 支持通过以下系统环境变量控制 `wayback` 服务的运行。
+
+#### WAYBACK_TELEGRAM_TOKEN (required)
+
+Telegram Bot API Token.
+
+#### WAYBACK_ENABLE_IA
+
+支持 Internet Archive.
+
+更多配置选项参见 [wabarc/wayback#configuration-parameters](https://github.com/wabarc/wayback#configuration-parameters)
+
+## 示例
+
+以下部分位于 `Actions` 任务的步骤节点：
+
+```yaml
+- uses: wabarc/on-github@v0.0.1
+  env:
+    WAYBACK_TELEGRAM_TOKEN: ${{ secrets.WAYBACK_TELEGRAM_TOKEN }}
+```
+
+完整配置：
+
+```yaml
+name: Wayback On GitHub
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+
+jobs:
+  wayback:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    continue-on-error: true
+    steps:
+    - name: Run wayback service
+      uses: wabarc/on-github@v0.0.1
+      env:
+        WAYBACK_TELEGRAM_TOKEN: ${{ secrets.WAYBACK_TELEGRAM_TOKEN }}
+```
+
+## 开源协议
+
+MIT

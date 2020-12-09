@@ -1,0 +1,19 @@
+name: 'Wayback On GitHub'
+description: 'Host wayback service on GitHub using Actions.'
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+
+branding:
+  color: 'green'
+  icon: 'activity'
+
+inputs:
+  WAYBACK_TELEGRAM_TOKEN:
+    description: 'Telegram Bot API Token.'
+    required: true
+  WAYBACK_ENABLE_IA:
+    description: 'Enable Internet Archive.'
+    required: false
+    default: true
