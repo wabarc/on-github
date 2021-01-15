@@ -8,6 +8,10 @@ Host wayback service on GitHub using Actions.
 
 Wayback service use environment variables as default.
 
+#### WAYBACK_DAEMON
+
+Enable daemon service, supports **telegram**, **web**, e.g WAYBACK_DAEMON=telegram,web
+
 #### WAYBACK_TELEGRAM_TOKEN (required)
 
 Telegram Bot API Token.
