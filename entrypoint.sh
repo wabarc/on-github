@@ -20,5 +20,8 @@ fi
 if [ -n "${WAYBACK_ENABLE_IP}" ]; then
     args="${args} --ip true"
 fi
+if [ -n "${WAYBACK_ENABLE_PH}" ]; then
+    args="${args} --ph true"
+fi
 
 wayback $(echo "${daemon}" "${args}")
