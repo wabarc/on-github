@@ -1,7 +1,7 @@
 FROM ghcr.io/wabarc/wayback
 
-LABEL repository="http://github.com/wabarc/on-github"
 LABEL homepage="http://github.com/wabarc"
+LABEL repository="http://github.com/wabarc/on-github"
 LABEL maintainer="Wayback Archiver <wabarc@tuta.io>"
 
 LABEL com.github.actions.name="on-github."

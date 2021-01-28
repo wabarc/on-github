@@ -16,9 +16,16 @@ Enable daemon service, supports **telegram**, **web**, e.g WAYBACK_DAEMON=telegr
 
 Telegram Bot API Token.
 
-#### WAYBACK_ENABLE_IA
+#### WAYBACK_TO
 
-Enable Internet Archive.
+Enable archiving service, separate by comma.
+
+Slot values are:
+
+- ia: Internet Archive
+- is: archive.today
+- ip: IPFS
+- ph: Telegra.ph
 
 More configuration options and details, see [wabarc/wayback#configuration-parameters](https://github.com/wabarc/wayback#configuration-parameters)
 

@@ -11,16 +11,16 @@ if [ -z "${WAYBACK_DAEMON##*web*}" ]; then
 fi
 
 args=""
-if [ -n "${WAYBACK_ENABLE_IA}" ]; then
+if [ -z "${WAYBACK_TO##*ia*}" ]; then
     args="${args} --ia true"
 fi
-if [ -n "${WAYBACK_ENABLE_IS}" ]; then
+if [ -z "${WAYBACK_TO##*ip*}" ]; then
     args="${args} --is true"
 fi
-if [ -n "${WAYBACK_ENABLE_IP}" ]; then
+if [ -z "${WAYBACK_TO##*ip*}" ]; then
     args="${args} --ip true"
 fi
-if [ -n "${WAYBACK_ENABLE_PH}" ]; then
+if [ -z "${WAYBACK_TO##*ph*}" ]; then
     args="${args} --ph true"
 fi
 

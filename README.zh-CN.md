@@ -12,9 +12,14 @@
 
 Telegram Bot API Token.
 
-#### WAYBACK_ENABLE_IA
+#### WAYBACK_TO
 
-支持 Internet Archive.
+启用的备份项，多个用英文逗号分隔，支持如下项目：
+
+- ia: Internet Archive
+- is: archive.today
+- ip: IPFS
+- ph: Telegra.ph
 
 更多配置选项参见 [wabarc/wayback#configuration-parameters](https://github.com/wabarc/wayback#configuration-parameters)
 
