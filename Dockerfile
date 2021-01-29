@@ -10,6 +10,8 @@ LABEL com.github.actions.icon="package"
 LABEL com.github.actions.color="red"
 
 ENV BASE_DIR /wayback
+ARG FONT_DIR=/usr/share/fonts/noto
+ARG FONT_URL=https://github.com/googlefonts/noto-cjk/blob/master/NotoSansCJK-Regular.ttc?raw=true
 
 # Install Chromium
 RUN set -x \
@@ -19,7 +21,15 @@ RUN set -x \
     \
     && apk update \
     && apk add --no-cache dbus dumb-init libstdc++ nss chromium harfbuzz nss freetype ttf-freefont font-noto-emoji wqy-zenhei \
-    && rm -rf /var/cache/apk/* /tmp/*
+    \
+    ## Install fonts
+    && mkdir -p $FONT_DIR \
+    && cd $FONT_DIR \
+    && wget $FONT_URL \
+    && fc-cache -f -v \
+    \
+    ## Clean
+    && rm -rf /var/cache/apk/* /tmp/* /var/tmp/*
 
 COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
