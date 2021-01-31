@@ -10,8 +10,6 @@ LABEL com.github.actions.icon="package"
 LABEL com.github.actions.color="red"
 
 ENV BASE_DIR /wayback
-ARG FONT_DIR=/usr/share/fonts/noto
-ARG FONT_URL=https://github.com/googlefonts/noto-cjk/blob/master/NotoSansCJK-Regular.ttc?raw=true
 
 # Install Chromium
 RUN set -x \
@@ -20,13 +18,7 @@ RUN set -x \
     && echo "http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories \
     \
     && apk update \
-    && apk add --no-cache dbus dumb-init libstdc++ nss chromium harfbuzz nss freetype ttf-freefont font-noto-emoji wqy-zenhei \
-    \
-    ## Install fonts
-    && mkdir -p $FONT_DIR \
-    && cd $FONT_DIR \
-    && wget $FONT_URL \
-    && fc-cache -f -v \
+    && apk add --no-cache dbus dumb-init libstdc++ nss chromium harfbuzz nss freetype ttf-freefont font-noto-emoji font-noto-cjk \
     \
     ## Clean
     && rm -rf /var/cache/apk/* /tmp/* /var/tmp/*
