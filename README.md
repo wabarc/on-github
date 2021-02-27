@@ -10,7 +10,7 @@ Wayback service use environment variables as default.
 
 #### WAYBACK_DAEMON
 
-Enable daemon service, supports **telegram**, **web**, e.g WAYBACK_DAEMON=telegram,web
+Enable daemon service, supports **telegram**, **web**, **mastodon**, **twitter**, e.g WAYBACK_DAEMON=telegram,web
 
 #### WAYBACK_TELEGRAM_TOKEN (required)
 
