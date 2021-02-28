@@ -3,8 +3,14 @@
 set -e pipefail
 
 daemon=""
+if [ -z "${WAYBACK_DAEMON##*mastodon*}" ]; then
+    daemon="-d mastodon"
+fi
 if [ -z "${WAYBACK_DAEMON##*telegram*}" ]; then
-    daemon="-d telegram"
+    daemon="${daemon} -d telegram"
+fi
+if [ -z "${WAYBACK_DAEMON##*twitter*}" ]; then
+    daemon="${daemon} -d twitter"
 fi
 if [ -z "${WAYBACK_DAEMON##*web*}" ]; then
     daemon="${daemon} -d web"
