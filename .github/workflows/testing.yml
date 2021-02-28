@@ -1,0 +1,22 @@
+name: Testing
+
+on:
+  push:
+    branches:
+      - "**"
+  pull_request:
+    branches: [ main ]
+    types: [ opened, synchronize, reopened ]
+
+jobs:
+  test:
+    name: Testing
+    runs-on: ubuntu-latest
+    steps:
+    - name: Run wayback
+      timeout-minutes: 3
+      continue-on-error: true
+      env:
+        DEBUG: "on"
+        WAYBACK_DAEMON: "web"
+      uses: wabarc/on-github@main
