@@ -1,31 +1,48 @@
 FROM ghcr.io/wabarc/wayback
 
-LABEL homepage="http://github.com/wabarc"
-LABEL repository="http://github.com/wabarc/on-github"
-LABEL maintainer="Wayback Archiver <wabarc@tuta.io>"
-
-LABEL com.github.actions.name="on-github."
-LABEL com.github.actions.description="Host wayback service on GitHub using Actions."
-LABEL com.github.actions.icon="package"
-LABEL com.github.actions.color="red"
+LABEL org.wabarc.homepage="http://github.com/wabarc" \
+      org.wabarc.repository="http://github.com/wabarc/on-github" \
+      com.github.actions.name="on-github" \
+      com.github.actions.description="Host wayback service on GitHub using Actions." \
+      com.github.actions.icon="package" \
+      com.github.actions.color="red"
 
 ENV BASE_DIR /wayback
 
-# Install Chromium
-RUN set -x \
-    && echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" > /etc/apk/repositories \
-    && echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories \
-    && echo "http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories \
-    \
-    && apk update \
-    && apk add --no-cache dbus dumb-init libstdc++ nss chromium harfbuzz nss freetype ttf-freefont font-noto-emoji font-noto-cjk \
-    \
-    ## Clean
-    && rm -rf /var/cache/apk/* /tmp/* /var/tmp/*
-
-COPY entrypoint.sh /
-RUN chmod +x /entrypoint.sh
-
 WORKDIR ${BASE_DIR}
 
-ENTRYPOINT ["/entrypoint.sh"]
+# Ref: https://wiki.alpinelinux.org/wiki/Fonts
+RUN set -o pipefail && \
+    apk upgrade -U -a && \
+    apk add --no-cache \
+    dbus \
+    dumb-init \
+    libstdc++ \
+    nss \
+    chromium \
+    harfbuzz \
+    freetype \
+    ttf-freefont \
+    ttf-font-awesome \
+    font-noto \
+    font-noto-arabic \
+    font-noto-emoji \
+    font-noto-cjk \
+    font-noto-extra \
+    font-noto-lao \
+    font-noto-myanmar \
+    font-noto-thai \
+    font-noto-tibetan \
+    supervisor \
+    ca-certificates \
+    py3-setuptools \
+ && rm -rf /var/cache/apk/* /tmp/* /var/tmp/*
+
+COPY entrypoint.sh /
+COPY supervisord.conf /etc/
+
+RUN chmod a+w /var/log/tor
+
+#USER wayback
+
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
