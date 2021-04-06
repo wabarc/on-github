@@ -13,7 +13,6 @@ WORKDIR ${BASE_DIR}
 
 # Ref: https://wiki.alpinelinux.org/wiki/Fonts
 RUN set -o pipefail && \
-    apk upgrade -U -a && \
     apk add --no-cache \
     dbus \
     dumb-init \
