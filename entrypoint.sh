@@ -20,7 +20,7 @@ args=""
 if [ -z "${WAYBACK_TO##*ia*}" ]; then
     args="${args} --ia true"
 fi
-if [ -z "${WAYBACK_TO##*ip*}" ]; then
+if [ -z "${WAYBACK_TO##*is*}" ]; then
     args="${args} --is true"
 fi
 if [ -z "${WAYBACK_TO##*ip*}" ]; then
