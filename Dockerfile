@@ -42,6 +42,6 @@ COPY supervisord.conf /etc/
 
 RUN chmod a+w /var/log/tor
 
-#USER wayback
+USER wayback
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
