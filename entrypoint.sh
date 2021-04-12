@@ -30,4 +30,8 @@ if [ -z "${WAYBACK_TO##*ph*}" ]; then
     args="${args} --ph true"
 fi
 
+if [ -z "${CHROMEDP_NO_SANDBOX}" ]; then
+    export CHROMEDP_NO_SANDBOX=true
+fi
+
 wayback $(echo "${daemon}" "${args}")
