@@ -15,6 +15,12 @@ fi
 if [ -z "${WAYBACK_DAEMON##*web*}" ]; then
     daemon="${daemon} -d web"
 fi
+if [ -z "${WAYBACK_DAEMON##*irc*}" ]; then
+    daemon="${daemon} -d irc"
+fi
+if [ -z "${WAYBACK_DAEMON##*matrix*}" ]; then
+    daemon="${daemon} -d matrix"
+fi
 
 args=""
 if [ -z "${WAYBACK_TO##*ia*}" ]; then
