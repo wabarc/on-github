@@ -36,6 +36,10 @@ if [ -z "${WAYBACK_TO##*ph*}" ]; then
     args="${args} --ph true"
 fi
 
+if [ -f "wayback.conf" ]; then
+    args="${args} --config wayback.conf"
+fi
+
 if [ -z "${CHROMEDP_NO_SANDBOX}" ]; then
     export CHROMEDP_NO_SANDBOX=true
 fi

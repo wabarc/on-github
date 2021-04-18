@@ -9,12 +9,29 @@ on:
     types: [ opened, synchronize, reopened ]
 
 jobs:
-  test:
-    name: Testing
+  envs:
+    name: Testing Env
     runs-on: ubuntu-latest
     steps:
     - name: Run wayback
-      timeout-minutes: 3
+      timeout-minutes: 2
+      continue-on-error: true
+      env:
+        DEBUG: "on"
+        WAYBACK_DAEMON: "web"
+      uses: wabarc/on-github@nightly
+  files:
+    name: Testing Files
+    runs-on: ubuntu-latest
+    steps:
+    - name: Set configurations
+      shell: bash
+      run: |
+        echo "${{ secrets.WAYBACK_CONFIGURATIONS }}" > wayback.conf
+        cat wayback.conf
+
+    - name: Run wayback
+      timeout-minutes: 2
       continue-on-error: true
       env:
         DEBUG: "on"
