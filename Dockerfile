@@ -40,7 +40,8 @@ RUN set -o pipefail && \
 COPY entrypoint.sh /
 COPY supervisord.conf /etc/
 
-RUN chmod a+w /var/log/tor
+RUN chown wayback:nogroup /var/log/tor && \
+    chown wayback:nogroup /var/lib/tor
 
 USER wayback
 
