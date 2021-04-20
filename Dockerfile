@@ -44,4 +44,6 @@ RUN chmod a+w /var/log/tor
 
 USER wayback
 
+ENTRYPOINT ["dumb-init", "--"]
+
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
