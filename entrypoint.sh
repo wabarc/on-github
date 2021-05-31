@@ -40,8 +40,4 @@ if [ -f "wayback.conf" ]; then
     args="${args} --config wayback.conf"
 fi
 
-if [ -z "${CHROMEDP_NO_SANDBOX}" ]; then
-    export CHROMEDP_NO_SANDBOX=true
-fi
-
 wayback $(echo "${daemon}" "${args}")

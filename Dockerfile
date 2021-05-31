@@ -7,7 +7,10 @@ LABEL org.wabarc.homepage="http://github.com/wabarc" \
       com.github.actions.icon="package" \
       com.github.actions.color="red"
 
-ENV BASE_DIR /wayback
+ENV WD=/wayback
+ENV WAYBACK_BOLT_PATH="${WD}/wayback.db"
+ENV CHROMEDP_NO_SANDBOX=true
+ENV CHROMEDP_DISABLE_GPU=true
 
 WORKDIR ${BASE_DIR}
 
