@@ -1,4 +1,4 @@
-FROM ghcr.io/wabarc/wayback
+FROM ghcr.io/wabarc/wayback:edge
 
 LABEL org.wabarc.homepage="http://github.com/wabarc" \
       org.wabarc.repository="http://github.com/wabarc/on-github" \
