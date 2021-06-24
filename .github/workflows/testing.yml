@@ -13,17 +13,44 @@ jobs:
     name: Testing Env
     runs-on: ubuntu-latest
     steps:
+    - name: Check out code base
+      if: github.event_name == 'push'
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: Check out code base
+      if: github.event_name == 'pull_request'
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+        ref: ${{ github.event.pull_request.head.sha }}
+
     - name: Run wayback
       timeout-minutes: 2
       continue-on-error: true
       env:
         DEBUG: "on"
         WAYBACK_DAEMON: "web"
-      uses: wabarc/on-github@nightly
+      uses: ./
+
   files:
     name: Testing Files
     runs-on: ubuntu-latest
     steps:
+    - name: Check out code base
+      if: github.event_name == 'push'
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: Check out code base
+      if: github.event_name == 'pull_request'
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+        ref: ${{ github.event.pull_request.head.sha }}
+
     - name: Set configurations
       shell: bash
       run: |
@@ -36,4 +63,4 @@ jobs:
       env:
         DEBUG: "on"
         WAYBACK_DAEMON: "web"
-      uses: wabarc/on-github@main
+      uses: ./

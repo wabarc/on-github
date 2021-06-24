@@ -41,9 +41,11 @@ More configuration options and details, see [wabarc/wayback#configuration-parame
 ## Example
 
 ```yaml
-- uses: wabarc/on-github@v0.0.1
+- name: Wayback on GitHub
+  uses: wabarc/on-github@v1.0.0
   env:
-    WAYBACK_TELEGRAM_TOKEN: ${{ secrets.WAYBACK_TELEGRAM_TOKEN }}
+    DEBUG: 'true'
+    WAYBACK_DAEMON: 'web'
 ```
 
 ## License

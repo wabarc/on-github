@@ -28,9 +28,11 @@ Telegram Bot API Token.
 以下部分位于 `Actions` 任务的步骤节点：
 
 ```yaml
-- uses: wabarc/on-github@v0.0.1
+- name: Wayback on GitHub
+  uses: wabarc/on-github@v1.0.0
   env:
-    WAYBACK_TELEGRAM_TOKEN: ${{ secrets.WAYBACK_TELEGRAM_TOKEN }}
+    DEBUG: 'true'
+    WAYBACK_DAEMON: 'web'
 ```
 
 完整配置：
