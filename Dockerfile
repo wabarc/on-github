@@ -16,14 +16,17 @@ ENV GC_MEM=2048
 WORKDIR ${BASE_DIR}
 
 # Ref: https://wiki.alpinelinux.org/wiki/Fonts
-RUN set -o pipefail && \
+RUN echo @edge https://dl-cdn.alpinelinux.org/alpine/edge/community >> /etc/apk/repositories && \
+    echo @edge https://dl-cdn.alpinelinux.org/alpine/edge/main >> /etc/apk/repositories && \
+    set -o pipefail && \
     apk add --no-cache \
     dbus \
     dumb-init \
     libstdc++ \
-    nss \
-    chromium \
-    harfbuzz \
+    nss@edge \
+    ffmpeg \
+    chromium@edge \
+    harfbuzz@edge \
     freetype \
     ttf-freefont \
     ttf-font-awesome \
