@@ -3,22 +3,28 @@
 set -e pipefail
 
 daemon=""
-if [ -z "${WAYBACK_DAEMON##*mastodon*}" ]; then
-    daemon="-d mastodon"
-fi
-if [ -z "${WAYBACK_DAEMON##*telegram*}" ]; then
+if echo "${WAYBACK_DAEMON}" | grep -q "telegram"; then
     daemon="${daemon} -d telegram"
 fi
-if [ -z "${WAYBACK_DAEMON##*twitter*}" ]; then
+if echo "${WAYBACK_DAEMON}" | grep -q "mastodon"; then
+    daemon="${daemon} -d mastodon"
+fi
+if echo "${WAYBACK_DAEMON}" | grep -q "twitter"; then
     daemon="${daemon} -d twitter"
 fi
-if [ -z "${WAYBACK_DAEMON##*web*}" ]; then
+if echo "${WAYBACK_DAEMON}" | grep -q "discord"; then
+    daemon="${daemon} -d discord"
+fi
+if echo "${WAYBACK_DAEMON}" | grep -q "slack"; then
+    daemon="${daemon} -d slack"
+fi
+if echo "${WAYBACK_DAEMON}" | grep -q "web"; then
     daemon="${daemon} -d web"
 fi
-if [ -z "${WAYBACK_DAEMON##*irc*}" ]; then
+if echo "${WAYBACK_DAEMON}" | grep -q "irc"; then
     daemon="${daemon} -d irc"
 fi
-if [ -z "${WAYBACK_DAEMON##*matrix*}" ]; then
+if echo "${WAYBACK_DAEMON}" | grep -q "matrix"; then
     daemon="${daemon} -d matrix"
 fi
 
