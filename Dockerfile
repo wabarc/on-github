@@ -27,6 +27,7 @@ RUN echo @edge https://dl-cdn.alpinelinux.org/alpine/edge/community >> /etc/apk/
     ffmpeg \
     chromium@edge \
     harfbuzz@edge \
+    libwebp-tools \
     freetype \
     ttf-freefont \
     ttf-font-awesome \
