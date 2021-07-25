@@ -23,12 +23,12 @@ RUN echo @edge https://dl-cdn.alpinelinux.org/alpine/edge/community >> /etc/apk/
     dbus \
     dumb-init \
     libstdc++ \
+    libwebp-tools \
     nss@edge \
-    ffmpeg \
+    ffmpeg@edge \
     chromium@edge \
     harfbuzz@edge \
-    libwebp-tools \
-    freetype \
+    freetype@edge \
     ttf-freefont \
     ttf-font-awesome \
     font-noto \
