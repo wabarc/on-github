@@ -25,6 +25,7 @@ RUN echo @edge https://dl-cdn.alpinelinux.org/alpine/edge/community >> /etc/apk/
     libstdc++ \
     libwebp-tools \
     nss@edge \
+    youtube-dl \
     ffmpeg@edge \
     chromium@edge \
     harfbuzz@edge \
