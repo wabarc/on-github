@@ -25,7 +25,6 @@ RUN echo @edge https://dl-cdn.alpinelinux.org/alpine/edge/community >> /etc/apk/
     libstdc++ \
     libwebp-tools \
     nss@edge \
-    youtube-dl \
     ffmpeg@edge \
     chromium@edge \
     harfbuzz@edge \
@@ -41,6 +40,9 @@ RUN echo @edge https://dl-cdn.alpinelinux.org/alpine/edge/community >> /etc/apk/
     font-noto-myanmar \
     font-noto-thai \
     font-noto-tibetan \
+    you-get \
+    rtmpdump \
+    youtube-dl \
     supervisor \
     ca-certificates \
     py3-setuptools \
