@@ -9,6 +9,7 @@ LABEL org.wabarc.homepage="http://github.com/wabarc" \
 
 ENV WD=/wayback
 ENV WAYBACK_BOLT_PATH="${WD}/wayback.db"
+ENV WAYBACK_STORAGE_DIR="/tmp/reduxer"
 ENV CHROMEDP_NO_SANDBOX=true
 ENV CHROMEDP_DISABLE_GPU=true
 ENV GC_MEM=2048
