@@ -42,6 +42,23 @@ if [ -z "${WAYBACK_TO##*ph*}" ]; then
     args="${args} --ph true"
 fi
 
+if [ -n "${WAYBACK_TOR_LOCAL_PORT}" ]; then
+    export PORT=$WAYBACK_TOR_LOCAL_PORT
+fi
+
+if [ -z "${CHROMEDP_NO_SANDBOX}" ]; then
+    export CHROMEDP_NO_SANDBOX=true
+fi
+if [ -z "${CHROMEDP_DISABLE_GPU}" ]; then
+    export CHROMEDP_DISABLE_GPU=true
+fi
+if [ -z "${CHROMEDP_NO_HEADLESS}" ]; then
+    export CHROMEDP_NO_HEADLESS=false
+fi
+if [ -z "${CHROMEDP_USER_AGENT}" ]; then
+    export CHROMEDP_USER_AGENT="Mozilla/5.0 (en-us) AppleWebKit/525.13 (KHTML, like Gecko) Version/3.1 Safari/525.13"
+fi
+
 if [ -f "wayback.conf" ]; then
     args="${args} --config wayback.conf"
 fi
